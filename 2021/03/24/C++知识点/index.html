@@ -18,9 +18,25 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-  <title>标签 - Hollow&#39;s blog</title>
+  <title>C++知识复习 - Hollow&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
 
 
 
@@ -48,7 +64,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -147,17 +163,50 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="标签">
+            <span class="h2" id="subtitle" title="C++知识复习">
               
             </span>
 
             
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-03-24 15:38" pubdate>
+        2021年3月24日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      747 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      7
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
           </div>
 
-          
-            <div class="scroll-down-bar">
-              <i class="iconfont icon-arrowdown"></i>
-            </div>
           
         </div>
       </div>
@@ -166,24 +215,89 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
+      
 
-<div class="text-center tagcloud">
-  <a href="/tags/C/" style="font-size: 15px; color: #bbe">C++</a>
-</div>
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">C++知识复习</h1>
+            
+            <div class="markdown-body">
+              <h2 id="c-的构造函数为什么不能是虚函数，而基类的析构函数必须是虚函数？来源"><a href="#c-的构造函数为什么不能是虚函数，而基类的析构函数必须是虚函数？来源" class="headerlink" title="c++的构造函数为什么不能是虚函数，而基类的析构函数必须是虚函数？来源"></a>c++的构造函数为什么不能是虚函数，而基类的析构函数必须是虚函数？<a target="_blank" rel="noopener" href="https://blog.csdn.net/gochenguowei/article/details/79682681?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.control&dist_request_id=&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.control">来源</a></h2><h3 id="构造函数为什么不能是虚函数呢？"><a href="#构造函数为什么不能是虚函数呢？" class="headerlink" title="构造函数为什么不能是虚函数呢？"></a>构造函数为什么不能是虚函数呢？</h3><p>    首先需要了解 vptr指针和虚函数表的概念，以及这两者的关联。</p>
+<p>​    vptr指针指向虚函数表，执行虚函数的时候，会调用vptr指针指向的虚函数的地址。</p>
+<p>​    当定义一个对象的时候，首先会分配对象内存空间，然后调用构造函数来初始化对象。vptr变量是在构造函数中进行初始化的。又因为执行虚函数需要通过vptr指针来调用。如果可以定义构造函数为虚函数，那么就会陷入先有鸡还是先有蛋的循环讨论中。</p>
+<h3 id="基类的析构函数为什么必须是虚函数呢？"><a href="#基类的析构函数为什么必须是虚函数呢？" class="headerlink" title="基类的析构函数为什么必须是虚函数呢？"></a>基类的析构函数为什么必须是虚函数呢？</h3><p>    我们都知道，想要回收一个对象申请的资源，那么就需要调用析构函数。虽然我们没有显示地调用析构函数，但是编译器都会默认地为我们执行析构函数。</p>
+<p>​    那么当我们执行 BaseClass *base = new BaseClass(); 当我们执行 delete base时，会调用析构函数为我们释放资源。而 我们执行BaseClass *sub = new SubClass(); 如果BaseClass基类的析构函数不是虚函数的时候，delete sub 对象的时候，只会释放BaseClass 基类申请的资源，而不是释放SubClass派生类的资源。原因如下：</p>
+<p>​    基类指针指向了派生类对象，而基类中的析构函数是非virtual的，而虚构函数是动态绑定的基础。现在析构函数不是virtual的，因此不会发生动态绑定，而是静态绑定，指针的静态类型为基类指针，因此在delete的时候只会调用基类的析构函数，而不会调用派生类的析构函数。这样，在派生类中申请的资源就不会得到释放，就会造成内存泄漏，这是相当危险的：如果系统中有大量的派生类对象被这样创建和销毁，就会有内存不断的泄漏，久而久之，系统就会因为缺少内存而崩溃。</p>
+<p>​    当然，如果在派生类中没有动态申请有资源的时候，是不会造成内存泄漏的。而当派生类对象的析构函数中有内存需要回收，并且在编程过程中采用了基类指针指向派生类对象，如为了实现多态，并且通过基类指针将对象销毁，这时，就会因为基类的析构函数为非虚函数而不触发动态绑定，从而没有调用派生类的析构函数而导致内存泄漏。    </p>
+<p>    因此，为了防止这种情况下的内存泄漏的发生，最后将基类的析构函数写成virtual虚析构函数。  </p>
 
-              </div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/C/">C++</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/03/22/hello-world/">
+                        <span class="hidden-mobile">Hello World</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
 
     
@@ -264,9 +378,15 @@
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
 
 
 
