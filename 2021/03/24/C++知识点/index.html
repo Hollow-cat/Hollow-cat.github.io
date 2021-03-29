@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      747 字
+      1.9k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      7
+      20
        分钟
     </span>
   
@@ -228,14 +228,31 @@
             <h1 style="display: none">C++知识复习</h1>
             
             <div class="markdown-body">
-              <h2 id="c-的构造函数为什么不能是虚函数，而基类的析构函数必须是虚函数？来源"><a href="#c-的构造函数为什么不能是虚函数，而基类的析构函数必须是虚函数？来源" class="headerlink" title="c++的构造函数为什么不能是虚函数，而基类的析构函数必须是虚函数？来源"></a>c++的构造函数为什么不能是虚函数，而基类的析构函数必须是虚函数？<a target="_blank" rel="noopener" href="https://blog.csdn.net/gochenguowei/article/details/79682681?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.control&dist_request_id=&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.control">来源</a></h2><h3 id="构造函数为什么不能是虚函数呢？"><a href="#构造函数为什么不能是虚函数呢？" class="headerlink" title="构造函数为什么不能是虚函数呢？"></a>构造函数为什么不能是虚函数呢？</h3><p>    首先需要了解 vptr指针和虚函数表的概念，以及这两者的关联。</p>
+              <h2 id="1-c-的构造函数为什么不能是虚函数，而基类的析构函数必须是虚函数？来源"><a href="#1-c-的构造函数为什么不能是虚函数，而基类的析构函数必须是虚函数？来源" class="headerlink" title="1.c++的构造函数为什么不能是虚函数，而基类的析构函数必须是虚函数？来源"></a>1.c++的构造函数为什么不能是虚函数，而基类的析构函数必须是虚函数？<a target="_blank" rel="noopener" href="https://blog.csdn.net/gochenguowei/article/details/79682681?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.control&dist_request_id=&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.control">来源</a></h2><h3 id="构造函数为什么不能是虚函数呢？"><a href="#构造函数为什么不能是虚函数呢？" class="headerlink" title="构造函数为什么不能是虚函数呢？"></a>构造函数为什么不能是虚函数呢？</h3><p>    首先需要了解 vptr指针和虚函数表的概念，以及这两者的关联。</p>
 <p>​    vptr指针指向虚函数表，执行虚函数的时候，会调用vptr指针指向的虚函数的地址。</p>
 <p>​    当定义一个对象的时候，首先会分配对象内存空间，然后调用构造函数来初始化对象。vptr变量是在构造函数中进行初始化的。又因为执行虚函数需要通过vptr指针来调用。如果可以定义构造函数为虚函数，那么就会陷入先有鸡还是先有蛋的循环讨论中。</p>
 <h3 id="基类的析构函数为什么必须是虚函数呢？"><a href="#基类的析构函数为什么必须是虚函数呢？" class="headerlink" title="基类的析构函数为什么必须是虚函数呢？"></a>基类的析构函数为什么必须是虚函数呢？</h3><p>    我们都知道，想要回收一个对象申请的资源，那么就需要调用析构函数。虽然我们没有显示地调用析构函数，但是编译器都会默认地为我们执行析构函数。</p>
 <p>​    那么当我们执行 BaseClass *base = new BaseClass(); 当我们执行 delete base时，会调用析构函数为我们释放资源。而 我们执行BaseClass *sub = new SubClass(); 如果BaseClass基类的析构函数不是虚函数的时候，delete sub 对象的时候，只会释放BaseClass 基类申请的资源，而不是释放SubClass派生类的资源。原因如下：</p>
 <p>​    基类指针指向了派生类对象，而基类中的析构函数是非virtual的，而虚构函数是动态绑定的基础。现在析构函数不是virtual的，因此不会发生动态绑定，而是静态绑定，指针的静态类型为基类指针，因此在delete的时候只会调用基类的析构函数，而不会调用派生类的析构函数。这样，在派生类中申请的资源就不会得到释放，就会造成内存泄漏，这是相当危险的：如果系统中有大量的派生类对象被这样创建和销毁，就会有内存不断的泄漏，久而久之，系统就会因为缺少内存而崩溃。</p>
 <p>​    当然，如果在派生类中没有动态申请有资源的时候，是不会造成内存泄漏的。而当派生类对象的析构函数中有内存需要回收，并且在编程过程中采用了基类指针指向派生类对象，如为了实现多态，并且通过基类指针将对象销毁，这时，就会因为基类的析构函数为非虚函数而不触发动态绑定，从而没有调用派生类的析构函数而导致内存泄漏。    </p>
-<p>    因此，为了防止这种情况下的内存泄漏的发生，最后将基类的析构函数写成virtual虚析构函数。  </p>
+<p>    因此，为了防止这种情况下的内存泄漏的发生，最后将基类的析构函数写成virtual虚析构函数。</p>
+<h2 id="2-重载和重写的区别"><a href="#2-重载和重写的区别" class="headerlink" title="2.重载和重写的区别"></a>2.重载和重写的区别</h2><p>重载：指同一可访问区域内被声明的几个具有不同参数列的同名函数，使用时根据参数列表确定调用哪个函数，重载不关心函数的返回类型。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span>&#123;</span><br><span class="hljs-keyword">public</span>:<br>  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">test</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i)</span></span>;<br>  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">test</span><span class="hljs-params">(<span class="hljs-keyword">double</span> i)</span></span>;<br>  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">test</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i, <span class="hljs-keyword">double</span> j)</span></span>;<br>  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">test</span><span class="hljs-params">(<span class="hljs-keyword">double</span> i, <span class="hljs-keyword">int</span> j)</span></span>;<br>  <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">test</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i)</span></span>;         <span class="hljs-comment">//错误，非重载</span><br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>重写：即覆盖，指在派生类中存在重新定义的函数。其函数名、参数列表和返回类型同基类中被重写的函数一致，只有函数体不同。重写的基类中被重写的函数必须有virual修饰。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span></span><br><span class="hljs-class">&#123;</span><br><span class="hljs-keyword">public</span> :<br>       <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">func1</span><span class="hljs-params">()</span></span><br><span class="hljs-function">      </span>&#123;<br>           cout &lt;&lt; <span class="hljs-string">&quot;A::func1()&quot;</span> &lt;&lt; endl;<br>      &#125;<br><span class="hljs-keyword">private</span> :<br>       <span class="hljs-keyword">int</span> _a;<br>&#125;;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">B</span> :</span> <span class="hljs-keyword">public</span> A<br>&#123;<br><span class="hljs-keyword">public</span> :<br>       <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">func1</span><span class="hljs-params">()</span></span><br><span class="hljs-function">      </span>&#123;<br>           cout &lt;&lt; <span class="hljs-string">&quot;B::func1()&quot;</span> &lt;&lt; endl;<br>      &#125;<br><span class="hljs-keyword">private</span> :<br>       <span class="hljs-keyword">int</span> _b;<br>&#125;;<br><br></code></pre></td></tr></table></figure>
+
+<h2 id="3-多态的实现及原理"><a href="#3-多态的实现及原理" class="headerlink" title="3.多态的实现及原理"></a>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qikaihuting/article/details/78433996?utm_medium=distribute.pc_relevant.none-task-blog-baidujs_title-0&spm=1001.2101.3001.4242">多态的实现及原理</a></h2><p>C++的多态性用一句话概括就是：在基类的函数前加上virtual关键字，在派生类中重写该函数，运行时将会根据对象的实际类型来调用相应的函数。如果对象类型是派生类，就调用派生类的函数；如果对象类型是基类，就调用基类的函数</p>
+<h3 id="为什么？"><a href="#为什么？" class="headerlink" title="为什么？"></a>为什么？</h3><p>因为编译器在编译的时候，就已经确定了对象调用的函数的地址，要解决这个问题就要使用晚绑定，当编译器使用晚绑定时候，就会在运行时再去确定对象的类型以及正确的调用函数，而要让编译器采用晚绑定，就要在基类中声明函数时使用virtual关键字，这样的函数我们就称之为虚函数，一旦某个函数在基类中声明为virtual，那么在所有的派生类中该函数都是virtual，而不需要再显式地声明为virtual。</p>
+<h3 id="虚表"><a href="#虚表" class="headerlink" title="虚表"></a>虚表</h3><p>编译器在编译的时候，发现Father类中有虚函数，此时编译器会为每个包含虚函数的类创建一个虚表(即 vtable)，该表是一个一维数组，在这个数组中存放每个虚函数的地址。</p>
+<p><img src="http://images2015.cnblogs.com/blog/1019006/201611/1019006-20161117144006873-661542828.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>那么如何定位虚表呢？编译器另外还为每个对象提供了一个虚表指针(即vptr)，这个指针指向了对象所属类的虚表，在程序运行时，根据对象的类型去初始化vptr，从而让vptr正确的指向了所属类的虚表，从而在调用虚函数的时候，能够找到正确的函数，对于第二段代码程序，由于pFather实际指向的对象类型是Son，因此vptr指向的Son类的vtable，当调用pFather-&gt;Son()时，根据虚表中的函数地址找到的就是Son类的Say()函数，且续表在构造函数初始化。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>　　1:每一个类都有虚表</p>
+<p>　　2:虚表可以继承，如果子类没有重写虚函数，那么子类虚表中仍然会有该函数的地址，只不过这个地址指向的是基类的虚函数实现，如果基类有3个虚函数，那么基类的虚表中就有三项(虚函数地址)，派生类也会虚表，至少有三项，如果重写了相应的虚函数，那么虚表中的地址就会改变，指向自身的虚函数实现，如果派生类有自己的虚函数，那么虚表中就会添加该项。</p>
+<p>　　3：派生类的虚表中虚地址的排列顺序和基类的虚表中虚函数地址排列顺序相同。</p>
+<p>　　这就是c++中的多态性，当c++编译器在编译的时候，发现Father类的Say()函数是虚函数，这个时候c++就会采用晚绑定技术，也就是编译时并不确定具体调用的函数，而是在运行时，依据对象的类型来确认调用的是哪一个函数，这种能力就叫做c++的多态性，我们没有在Say()函数前加virtual关键字时，c++编译器就确定了哪个函数被调用，这叫做早期绑定。</p>
+<p>　　c++的多态性就是通过晚绑定技术来实现的。</p>
+<p>　　c++的多态性用一句话概括就是:在基类的函数前加上virtual关键字，在派生类中重写该函数，运行时将会根据对象的实际类型来调用相应的函数，如果对象类型是派生类，就调用派生类的函数，如果对象类型是基类，就调用基类的函数。</p>
 
             </div>
             <hr>
