@@ -18,7 +18,7 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-  <title>算法知识点 - Hollow&#39;s blog</title>
+  <title>2021春招面试 - Hollow&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="算法知识点">
+            <span class="h2" id="subtitle" title="2021春招面试">
               
             </span>
 
@@ -173,8 +173,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-03-31 15:40" pubdate>
-        2021年3月31日 下午
+      <time datetime="2021-04-02 22:30" pubdate>
+        2021年4月2日 晚上
       </time>
     </span>
   
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      98 字
+      311 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      3
        分钟
     </span>
   
@@ -225,11 +225,15 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">算法知识点</h1>
+            <h1 style="display: none">2021春招面试</h1>
             
             <div class="markdown-body">
-              <h1 id="算法知识点"><a href="#算法知识点" class="headerlink" title="算法知识点"></a>算法知识点</h1><h2 id="一、排序算法"><a href="#一、排序算法" class="headerlink" title="一、排序算法"></a>一、排序算法</h2><h3 id="1-快速排序"><a href="#1-快速排序" class="headerlink" title="1.快速排序"></a>1.快速排序</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">quick_sort</span><span class="hljs-params">(vector&lt;<span class="hljs-keyword">int</span>&gt; &amp;nums, <span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r)</span> </span><br><span class="hljs-function"></span>&#123; <span class="hljs-keyword">if</span> (l + <span class="hljs-number">1</span> &gt;= r) <br>  &#123; <span class="hljs-keyword">return</span>; &#125; <br>  <span class="hljs-keyword">int</span> first = l, last = r - <span class="hljs-number">1</span>, key = nums[first]; <br>  <span class="hljs-keyword">while</span> (first &lt; last)&#123; <br>      <span class="hljs-keyword">while</span>(first &lt; last &amp;&amp; nums[last] &gt;= key) <br>      &#123; --last; &#125; <br>      nums[first] = nums[last]; <br>      <span class="hljs-keyword">while</span> (first &lt; last &amp;&amp; nums[first] &lt;= key) <br>      &#123; ++first; &#125; <br>      nums[last] = nums[first]; <br>  &#125; <br>  nums[first] = key; <br>  <span class="hljs-built_in">quick_sort</span>(nums, l, first); <br>  <span class="hljs-built_in">quick_sort</span>(nums, first + <span class="hljs-number">1</span>, r); <br>&#125;<br><br></code></pre></td></tr></table></figure>
-
+              <h2 id="4-1-腾讯魔方工作室一面（约50mins）"><a href="#4-1-腾讯魔方工作室一面（约50mins）" class="headerlink" title="4-1 腾讯魔方工作室一面（约50mins）"></a>4-1 腾讯魔方工作室一面（约50mins）</h2><p>人生中第一次面试，在31号晚上写完网易笔试收到的消息，然后就开始了紧张的复习，当天早上和下午的课完全没心思听，一直在刷c++基础知识和做算法题。</p>
+<p>晚上八点面试，然而我和面试官都提早上线就比较早开始了，自我介绍太紧张了一开口说错自己是大二的了，面试官人很好，按着我的回答引导下去提问，到不会的地方就转移知识点了。</p>
+<p>c++一些地方则是完全没复习到，难以想象居然连类继承权限都忘了……我都要被自己蠢哭了，然后常量指针和指针常量没区分好，排序算法没解释完全，设计模式只说了概念。</p>
+<p>计网讲了tcp、udp，五层协议，检查tcp包的完整性。</p>
+<p>最后十分钟算法题，emmm，脑子空白没写出来，结束之后发现自己已经写得七七八八了，代码能力有待提高。</p>
+<p>面完第二天下午就挂了，是自己表现太菜了，感觉浪费了别人的时间。</p>
 
             </div>
             <hr>
@@ -240,7 +244,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+                      <a class="hover-with-bg" href="/tags/%E9%9D%A2%E7%BB%8F/">面经</a>
                     
                   </div>
                 
@@ -257,18 +261,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/04/02/2021%E6%98%A5%E6%8B%9B%E9%9D%A2%E8%AF%95/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2021春招面试</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/03/30/C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%80%81/">
-                        <span class="hidden-mobile">C语言实现多态</span>
+                      <a href="/2021/03/31/%E7%AE%97%E6%B3%95/">
+                        <span class="hidden-mobile">算法知识点</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

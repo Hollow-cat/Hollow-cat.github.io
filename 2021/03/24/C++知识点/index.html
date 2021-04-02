@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.1k 字
+      3.1k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      22
+      32
        分钟
     </span>
   
@@ -253,9 +253,37 @@
 <p>　　这就是c++中的多态性，当c++编译器在编译的时候，发现Father类的Say()函数是虚函数，这个时候c++就会采用晚绑定技术，也就是编译时并不确定具体调用的函数，而是在运行时，依据对象的类型来确认调用的是哪一个函数，这种能力就叫做c++的多态性，我们没有在Say()函数前加virtual关键字时，c++编译器就确定了哪个函数被调用，这叫做早期绑定。</p>
 <p>　　c++的多态性就是通过晚绑定技术来实现的。</p>
 <p>　　c++的多态性用一句话概括就是:在基类的函数前加上virtual关键字，在派生类中重写该函数，运行时将会根据对象的实际类型来调用相应的函数，如果对象类型是派生类，就调用派生类的函数，如果对象类型是基类，就调用基类的函数。</p>
-<h1 id="3-new-delete与malloc-free的区别与联系？"><a href="#3-new-delete与malloc-free的区别与联系？" class="headerlink" title="3.new/delete与malloc/free的区别与联系？"></a>3.new/delete与malloc/free的区别与联系？</h1><p>[]: <a target="_blank" rel="noopener" href="https://blog.csdn.net/changyi9995/article/details/108250671?utm_medium=distribute.pc_relevant.none-task-blog-baidujs_title-3&amp;spm=1001.2101.3001.4242">https://blog.csdn.net/changyi9995/article/details/108250671?utm_medium=distribute.pc_relevant.none-task-blog-baidujs_title-3&amp;spm=1001.2101.3001.4242</a></p>
+<h2 id="3-new-delete与malloc-free的区别与联系？"><a href="#3-new-delete与malloc-free的区别与联系？" class="headerlink" title="3.new/delete与malloc/free的区别与联系？"></a>3.new/delete与malloc/free的区别与联系？</h2><p>[]: <a target="_blank" rel="noopener" href="https://blog.csdn.net/changyi9995/article/details/108250671?utm_medium=distribute.pc_relevant.none-task-blog-baidujs_title-3&amp;spm=1001.2101.3001.4242">https://blog.csdn.net/changyi9995/article/details/108250671?utm_medium=distribute.pc_relevant.none-task-blog-baidujs_title-3&amp;spm=1001.2101.3001.4242</a></p>
 <p>（1）malloc开辟空间类型大小需手动计算，new是由编译器自己计算；<br>（2）malloc返回类型为void*,必须强制类型转换对应类型指针，new则直接返回对应类型指针；<br>（3）malloc开辟内存时返回内存地址要检查判空，因为若它可能开辟失败会返回NULL；new则不用判断，因为内存分配失败时，它会抛出异常bac_alloc,可以使用异常机制；</p>
 <p>（4）无论释放几个空间大小，free只传递指针，多个对象时delete需加[]（原因在第3）；</p>
+<h2 id="4-模板声明与定义要放在同一文件中？"><a href="#4-模板声明与定义要放在同一文件中？" class="headerlink" title="4.模板声明与定义要放在同一文件中？"></a>4.模板声明与定义要放在同一文件中？</h2><p>“通常情况下，你会在.h文件中声明函数和类，而将它们的定义放置在一个单独的.cpp文件中。但是在使用模板时，这种习惯性做法将变得不再有用，因为当实例化一个模板时，编译器必须看到模板确切的定义，而不仅仅是它的声明。因此，最好的办法就是将模板的声明和定义都放置在同一个.h文件中。这就是为什么所有的STL头文件都包含模板定义的原因。”[1]</p>
+<p>“标准要求编译器在实例化模板时必须在上下文中可以查看到其定义实体；而反过来，在看到实例化模板之前，编译器对模板的定义体是不处理的——原因很简单，编译器怎么会预先知道 typename 实参是什么呢？因此模板的实例化与定义体必须放到同一翻译单元中。”</p>
+<h2 id="5-四种cast转换"><a href="#5-四种cast转换" class="headerlink" title="5.四种cast转换"></a>5.四种cast转换</h2><p>C++中四种类型转换是：static_cast, dynamic_cast, const_cast, reinterpret_cast<br>1、const_cast</p>
+<p>用于将const变量转为非const</p>
+<p>2、static_cast</p>
+<p>用于各种隐式转换，比如非const转const，void*转指针等, static_cast能用于多态向上转化，如果向下转能成功但是不安全，结果未知；</p>
+<p>3、dynamic_cast</p>
+<p>用于动态类型转换。只能用于含有虚函数的类，用于类层次间的向上和向下转化。<em><strong>只能转指针或引用</strong></em>。向下转化时，如果是非法的<em><strong>对于指针返回NULL，对于引用抛异常</strong></em>。要深入了解内部转换的原理。</p>
+<p>向上转换：指的是子类向基类的转换</p>
+<p>向下转换：指的是基类向子类的转换</p>
+<p>它通过判断在执行到该语句的时候变量的运行时类型和要转换的类型是否相同来判断是否能够进行向下转换。</p>
+<p>4、reinterpret_cast</p>
+<p>几乎什么都可以转，比如将int转指针，可能会出问题，尽量少用；</p>
+<h2 id="6-const-char-、char-const-、-char-const-三者的区别"><a href="#6-const-char-、char-const-、-char-const-三者的区别" class="headerlink" title="6.const char * 、char const *、 char * const 三者的区别"></a>6.const char * 、char const *、 char * const 三者的区别</h2><p>前两者都是指向char类型常量的指针，第三者是指向char类型的指针常数</p>
+<h2 id="7-C-普通函数，普通成员函数、静态成员函数的区别"><a href="#7-C-普通函数，普通成员函数、静态成员函数的区别" class="headerlink" title="7.C++普通函数，普通成员函数、静态成员函数的区别"></a>7.C++普通函数，普通成员函数、静态成员函数的区别</h2><p>普通函数：属于全局函数，不受具体类和对象的限制，可以直接调用。</p>
+<p>普通成员函数：C++ 普通成员函数本质上是一个包含指向具体对象this指针的普通函数，即c++类的普通成员函数都隐式包含一个指向当前对象的this指针。</p>
+<p>静态成员函数</p>
+<p>首先介绍类的静态成员变量： 类体中的数据成员的声明前加上static关键字，该数据成员就成为了该类的静态数据成员。</p>
+<p>静态成员变量的性质：</p>
+<p>1）static型变量只被初始化一次，下次执行初始化语句会直接跳过。</p>
+<p>2）static 说明一个类的成员为静态成员，经过static修饰的成员变量属于这个类，不再仅仅属于具体的对象。</p>
+<p>再介绍静态成员函数： 类体中的成员函数的声明前加上static关键字，该成员函数就成为了该类的静态成员函数。</p>
+<p>静态成员函数的性质：</p>
+<p>1）不可以调用类的非静态成员。</p>
+<p>2）静态成员函数不含this指针。 静态成员函数属于这个类，不再仅仅属于具体的对象。</p>
+<p>因此类的静态成员函数和类的普通成员函数的区别是：</p>
+<p>静态成员函数不包含指向具体对象的this指针；</p>
+<p>普通成员函数包含一个指向具体对象的this指针。</p>
 
             </div>
             <hr>
