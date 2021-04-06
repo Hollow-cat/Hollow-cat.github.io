@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3.1k 字
+      3.2k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      32
+      35
        分钟
     </span>
   
@@ -284,6 +284,11 @@
 <p>因此类的静态成员函数和类的普通成员函数的区别是：</p>
 <p>静态成员函数不包含指向具体对象的this指针；</p>
 <p>普通成员函数包含一个指向具体对象的this指针。</p>
+<h2 id="8-传值传引用传指针"><a href="#8-传值传引用传指针" class="headerlink" title="8.传值传引用传指针"></a>8.传值传引用传指针</h2><p>（1）传入的实参实际上是a和b的副本而非其本身，所以对副本的改变并不会反应到a和b本身上。</p>
+<p>（2）传入的实参实际上是a和b的引用，对引用的改变会直接反应到a和b本身上。</p>
+<p>（3）传入的实参实际上是a和b的指针的副本，而且改变的是副本本身（其间接引用），不会（会）影响的指针所指向的值，即a和b本身上。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c++">(<span class="hljs-number">3</span>)两种情况<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Swap</span><span class="hljs-params">(<span class="hljs-keyword">int</span> *x, <span class="hljs-keyword">int</span> *y)</span></span><br><span class="hljs-function"></span>&#123;<br><span class="hljs-keyword">int</span> *temp = x ;<br><br>x = y ;<br><br>y = temp ;<br><br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Swap</span><span class="hljs-params">(<span class="hljs-keyword">int</span> *x, <span class="hljs-keyword">int</span> *y)</span></span><br><span class="hljs-function"></span>&#123;<br><span class="hljs-keyword">int</span> temp = *x ;<br><br>*x = *y ;<br><br>*y = temp ;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
 
             </div>
             <hr>
