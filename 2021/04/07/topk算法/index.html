@@ -18,7 +18,7 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-  <title>2021春招面试 - Hollow&#39;s blog</title>
+  <title>Topk问题 - Hollow&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -158,12 +158,12 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/n0.jpg') no-repeat center center;
+         style="background: url('/img/default.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="2021春招面试">
+            <span class="h2" id="subtitle" title="Topk问题">
               
             </span>
 
@@ -173,8 +173,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-04-02 22:30" pubdate>
-        2021年4月2日 晚上
+      <time datetime="2021-04-07 20:40" pubdate>
+        2021年4月7日 晚上
       </time>
     </span>
   
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      611 字
+      479 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      6
+      7
        分钟
     </span>
   
@@ -225,38 +225,15 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">2021春招面试</h1>
+            <h1 style="display: none">Topk问题</h1>
             
             <div class="markdown-body">
-              <h2 id="4-1-腾讯魔方工作室一面（约50mins）"><a href="#4-1-腾讯魔方工作室一面（约50mins）" class="headerlink" title="4-1 腾讯魔方工作室一面（约50mins）"></a>4-1 腾讯魔方工作室一面（约50mins）</h2><p>人生中第一次面试，在31号晚上写完网易笔试收到的消息，然后就开始了紧张的复习，当天早上和下午的课完全没心思听，一直在刷c++基础知识和做算法题。</p>
-<p>晚上八点面试，然而我和面试官都提早上线就比较早开始了，自我介绍太紧张了一开口说错自己是大二的了，面试官人很好，按着我的回答引导下去提问，到不会的地方就转移知识点了。</p>
-<p>c++一些地方则是完全没复习到，难以想象居然连类继承权限都忘了……我都要被自己蠢哭了，然后常量指针和指针常量没区分好，排序算法没解释完全，设计模式只说了概念。</p>
-<p>计网讲了tcp、udp，五层协议，检查tcp包的完整性。</p>
-<p>最后十分钟算法题，emmm，脑子空白没写出来，结束之后发现自己已经写得七七八八了，代码能力有待提高。</p>
-<p>面完第二天下午就挂了，是自己表现太菜了，感觉浪费了别人的时间。</p>
-<h2 id="4-9-网易互娱游戏研发面试（1-5h）"><a href="#4-9-网易互娱游戏研发面试（1-5h）" class="headerlink" title="4-9 网易互娱游戏研发面试（1.5h）"></a>4-9 网易互娱游戏研发面试（1.5h）</h2><p>主要结合简历来问，在沟通的过程中一直深挖。</p>
-<p>1.上来一道算法题，本人做题慢热型没做完，leetcode1129 安排会议</p>
-<p>，看了题解发现很简单，但…….完全没想到。</p>
-<p>2.c++部分</p>
-<p>智能指针：<strong>shared_ptr的实现机制</strong></p>
-<p>讲讲三个特点：封装继承多态</p>
-<p>c有没有重载</p>
-<p>虚函数：</p>
-<p>（1）基类指针指向子类对象，<strong>基类构造函数调用虚函数，析构函数调用虚函数，分别调用的是基类还是子类的函数。</strong></p>
-<p>（2）虚函数指针vptr的存放位置</p>
-<p><strong>定义一个空类，它的对象的空间大小是多少。</strong></p>
-<p>说说const转换</p>
-<p>3.操作系统</p>
-<p>进程线程的区别</p>
-<p>cpu调度算法</p>
-<p>如何激活一个线程</p>
-<p>4.计网</p>
-<p>tcp/udp区别</p>
-<p>tcp拥塞控制</p>
-<p>tcp四次挥手</p>
-<p>题目10亿个ipv4地址，找出访问最多次的地址。</p>
-<p>聊项目相关</p>
-<p>反问：实习生应该提前做什么准备，答：基础要好，不同工作室课题很广，好基础才能解决（有着暗示我基础不行的感觉，凉了）。</p>
+              <h1 id="TopK问题"><a href="#TopK问题" class="headerlink" title="TopK问题"></a>TopK问题</h1><p>Topk问题是在面试中常出现的一个问题，在这里也翻车过几次，特在这里总结一下。</p>
+<p>该问题是指在大量数据中找到最大的k个数（或者是第k大的数），一般来说可以用小顶堆或者快速排序来解决</p>
+<h2 id="小顶堆"><a href="#小顶堆" class="headerlink" title="小顶堆"></a>小顶堆</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br>   <span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">findKthLargest</span><span class="hljs-params">(vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums, <span class="hljs-keyword">int</span> k)</span> </span>&#123;<br>        <span class="hljs-comment">// 对前k个元素建成小根堆</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; k; i++) &#123;<br>            <span class="hljs-built_in">swim</span>(nums, i);<br>        &#125;<br>        <span class="hljs-comment">// 剩下的元素与堆顶比较，若大于堆顶则去掉堆顶，再将其插入</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = k; i &lt; nums.<span class="hljs-built_in">size</span>(); i++) &#123;<br>            <span class="hljs-keyword">if</span> (nums[i] &gt; nums[<span class="hljs-number">0</span>]) &#123;<br>                <span class="hljs-built_in">swap</span>(nums[<span class="hljs-number">0</span>], nums[i]);<br>                <span class="hljs-built_in">sink</span>(nums, <span class="hljs-number">0</span>, k - <span class="hljs-number">1</span>);<br>            &#125;<br>        &#125;<br>        <span class="hljs-comment">// 结束后第k个大的数就是小根堆的堆顶</span><br>        <span class="hljs-keyword">return</span> nums[<span class="hljs-number">0</span>];<br>    &#125;<br><br>   <span class="hljs-keyword">private</span>:<br>    <span class="hljs-comment">// 若v1比v2优先度高，返回true</span><br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">priorityThan</span><span class="hljs-params">(<span class="hljs-keyword">int</span> v1, <span class="hljs-keyword">int</span> v2)</span> </span>&#123; <span class="hljs-keyword">return</span> v1 &lt; v2; &#125;<br><br>    <span class="hljs-comment">// 上浮 从下到上调整堆</span><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">swim</span><span class="hljs-params">(vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; heap, <span class="hljs-keyword">int</span> i)</span> </span>&#123;<br>        <span class="hljs-keyword">while</span> (i &gt; <span class="hljs-number">0</span> &amp;&amp; <span class="hljs-built_in">priorityThan</span>(heap[i], heap[(i - <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>])) &#123;<br>            <span class="hljs-built_in">swap</span>(heap[i], heap[(i - <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>]);<br>            i = (i - <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-comment">// 下沉 从下到上调整堆</span><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">sink</span><span class="hljs-params">(vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; heap, <span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> N)</span> </span>&#123;<br>        <span class="hljs-keyword">while</span> (<span class="hljs-number">2</span> * i + <span class="hljs-number">1</span> &lt;= N) &#123;<br>            <span class="hljs-keyword">int</span> j = <span class="hljs-number">2</span> * i + <span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">if</span> (j + <span class="hljs-number">1</span> &lt;= N &amp;&amp; <span class="hljs-built_in">priorityThan</span>(heap[j + <span class="hljs-number">1</span>], heap[j])) &#123;<br>                j++;<br>            &#125;<br>            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">priorityThan</span>(heap[i], heap[j])) &#123;<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>            <span class="hljs-built_in">swap</span>(heap[i], heap[j]);<br>            i = j;<br>        &#125;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">quicksort</span><span class="hljs-params">(vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums,<span class="hljs-keyword">int</span> l,<span class="hljs-keyword">int</span> r)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">int</span> i=l+<span class="hljs-number">1</span>,j=r;<br>        <span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>)<br>        &#123;<span class="hljs-keyword">while</span>(i&lt;r&amp;&amp;nums[i]&lt;=nums[l])<br>        &#123;<br>            ++i;<br>        &#125;<br>        <span class="hljs-keyword">while</span>(l&lt;j&amp;&amp;nums[j]&gt;=nums[l])<br>        &#123;<br>            --j;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(i&gt;=j)<br>        &#123;<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>        <span class="hljs-built_in">swap</span>(nums[i],nums[j]);<br>        &#125;<br>        <span class="hljs-built_in">swap</span>(nums[l],nums[j]);<br>        <span class="hljs-keyword">return</span> j;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">findKthLargest</span><span class="hljs-params">(vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums, <span class="hljs-keyword">int</span> k)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> l = <span class="hljs-number">0</span>, r = nums.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>, target = nums.<span class="hljs-built_in">size</span>() - k; <br>        <span class="hljs-keyword">while</span>(l&lt;r)<br>        &#123;<br>            <span class="hljs-keyword">int</span> mid=<span class="hljs-built_in">quicksort</span>(nums,l,r);<br>            <span class="hljs-keyword">if</span>(mid==target)<br>            &#123;<br>                <span class="hljs-keyword">return</span> nums[mid];<br>            &#125;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(mid&lt;target)<br>            &#123;<br>                l=mid+<span class="hljs-number">1</span>;<br>            &#125;<br>            <span class="hljs-keyword">else</span>&#123;<br>                r=mid<span class="hljs-number">-1</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> nums[l];<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
 
             </div>
             <hr>
@@ -267,7 +244,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E9%9D%A2%E7%BB%8F/">面经</a>
+                      <a class="hover-with-bg" href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
                     
                   </div>
                 
@@ -284,18 +261,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/04/07/topk%E7%AE%97%E6%B3%95/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Topk问题</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/03/31/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">
-                        <span class="hidden-mobile">排序算法</span>
+                      <a href="/2021/04/02/2021%E6%98%A5%E6%8B%9B%E9%9D%A2%E8%AF%95/">
+                        <span class="hidden-mobile">2021春招面试</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
